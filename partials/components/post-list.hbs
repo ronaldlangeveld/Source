@@ -82,6 +82,19 @@
         {{#if showSidebar}}
             <aside class="gh-sidebar">
                 <div class="gh-sidebar-inner">
+                    {{#if showTags}}
+                        <section>
+                        <h2>{{@custom.tags_sidebar_title}}</h2>
+                            <div style="margin-top: 10px;">
+                                {{#get "tags" limit="all" include="count.posts" order="count.posts desc" as |tags|}}
+                                {{#foreach tags}}
+                                    <p><a href="{{url}}"><strong>{{name}}</strong></a> ({{count.posts}})</p>
+                                {{/foreach}}
+                            {{/get}}
+                            </div>
+                    </section>
+                    {{/if}}
+                    {{#if showPublicationInfo}}
                     <section class="gh-about">
                         {{#if @site.icon}}
                             <img class="gh-about-icon" src="{{@site.icon}}" alt="{{@site.title}}" loading="lazy">
@@ -102,6 +115,7 @@
                             {{/unless}}
                         {{/if}}
                     </section>
+                    {{/if}}
                     {{#if @site.recommendations_enabled}}
                         <section class="gh-recommendations">
                             <h4 class="gh-sidebar-title">Recommendations</h4>
