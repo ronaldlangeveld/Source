@@ -11,7 +11,7 @@
         
         {{#if showTitle}}
             <h2 class="gh-container-title">
-                {{#unless title}}Latest{{else}}{{title}}{{/unless}}
+                {{#unless title}}Posts{{else}}{{title}}{{/unless}}
             </h2>
         {{/if}}
 
@@ -32,8 +32,8 @@
                         {{else}}
                             {{#match posts.length ">=" 10}}
                                 {{#get "posts" include="authors" limit="22"}}
-                                    {{#foreach posts}}
-                                        {{> "post-card"}}
+                                    {{#foreach posts from="11" limit="12"}}
+                                        {{> "post-card" lazyLoad=true}}
                                     {{/foreach}}
                                 {{/get}}
                             {{/match}}
@@ -47,9 +47,9 @@
                             {{/get}}
                         {{/match}}
                     {{else}}
-                        {{#get "posts" include="authors" limit="12"}}
+                        {{#get "posts" include="authors" limit="all"}}
                             {{#foreach posts}}
-                                {{> "post-card" lazyLoad=true}}
+                                {{> "post-card"}}
                             {{/foreach}}
                         {{/get}}
                     {{/match}}
@@ -126,12 +126,6 @@
                 </div>
             </aside>
         {{/if}}
-
-        {{#match pagination.pages ">" 1}}
-            <div class="gh-more is-title">
-                <a href="{{@site.url}}/page/2">See all {{> "icons/arrow"}}</a>
-            </div>
-        {{/match}}
 
     </div>
 </section>
