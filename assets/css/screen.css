@@ -918,6 +918,19 @@ Search                         LOGO                    Login Subscribe
     }
 }
 
+/* custom class for hiding elements on the desktop version of the site. */
+
+.hide-desktop {
+    display: block;
+}
+
+@media (min-width: 767px) {
+    .hide-desktop {
+        display: none;
+    }
+}
+
+
 /* 7. Card
 /* ---------------------------------------------------------- */
 
